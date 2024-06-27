@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity(name = "tb_client")
-public class Client {
+public class CollegeReadList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
