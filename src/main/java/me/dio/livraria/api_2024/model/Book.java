@@ -10,7 +10,7 @@ public class Book {
     private Long id;
     private String title;
     private String author;
-    private Double price;
+
 
     public Long getId() {
         return id;
@@ -36,11 +36,5 @@ public class Book {
         this.author = author;
     }
 
-    public Double getPrice() {
-        return price;
-    }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }
