@@ -1,9 +1,13 @@
 package me.dio.livraria.api_2024.service;
 
+import me.dio.livraria.api_2024.model.Book;
 import me.dio.livraria.api_2024.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
-public class BookService implements ServiceAbstractEntity{
+import java.util.NoSuchElementException;
+
+public class BookService {
 
 
     @Autowired
@@ -14,28 +18,47 @@ public class BookService implements ServiceAbstractEntity{
         this.bookRepository = bookRepository;
     }
 
-    @Override
-    public Object findById(Long id) {
-        return null;
+
+    public ResponseEntity<Book> findById(Long id) {
+        return ResponseEntity.ok(bookRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
-    @Override
-    public Iterable<Object> findAll() {
-        return null;
+
+    public ResponseEntity<Iterable<Book>> findAll() {
+        return ResponseEntity.ok(bookRepository.findAll());
     }
 
-    @Override
-    public Object createNewObject(Object object) {
-        return null;
+
+    public ResponseEntity<Book> createNewBook(Book book) {
+
+        if (book!=null) {
+
+            return ResponseEntity.ok(bookRepository.save(book));
+
+        } else {
+
+            return null;
+
+        }
+
     }
 
-    @Override
-    public Object updateObject(Long id, Object objectToUpdate) {
-        return null;
+
+    public ResponseEntity<Book> updateBook(Long id, Book bookToUpdate) {
+
+        if (bookRepository.existsById(id)) {
+
+           return ResponseEntity.ok(bookRepository.save(bookToUpdate));
+
+
+        } else return null;
+
     }
 
-    @Override
-    public Object deleteObjectById(Long id) {
-        return null;
+
+    public void deleteBookById(Long id) {
+
+        bookRepository.deleteById(id);
+
     }
 }
