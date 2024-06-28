@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface StudentReadListRepository extends CrudRepository <StudentReadList, Long> {
+public interface CollegeReadListRepository extends CrudRepository <StudentReadList, Long> {
 
 
 }
